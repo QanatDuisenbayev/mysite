@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ZHASYRYN ZHAZU</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pe-icon-7-stroke.css' %}">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,700">
+    <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.default.css' %}" id="theme-stylesheet">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="shortcut icon" href="{% static 'favicon.png' %}">
+
+  </head>
+  <body>
+    <!-- navbar-->
+    <header class="header">
+      <div role="navigation" class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header"><a href="{% url 'base_view' %}" class="navbar-brand">ZHASYRYN ZHAZU</a>
+            <div class="navbar-buttons">
+              <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle navbar-btn">Батырма<i class="fa fa-align-justify"></i></button>
+            </div>
+          </div>
+          <div id="navigation" class="collapse navbar-collapse navbar-right">
+            {% block menu %}
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="{% url 'base_view' %}">Бастапқы бет</a></li>
+              {% if not request.user.is_authenticated %}
+              <li><a href="{% url 'login_view' %}"><i class="fa fa-sign-in"></i>Кіру</a></li>
+              <li><a href="{% url 'registration' %}"><i class="fa fa-sign-in"></i>Тіркелу</a></li>
+              {% endif %}
+              {% if request.user.is_authenticated %}
+              <li><a href="{% url 'account_view' request.user %}">Жeке парақшам</a></li>
+              <li><a href="{% url 'logout_view' %}"><i class="fa fa-sign-out"></i>Шығу</a></li> 
+              {% endif %}
+            </ul>
+            {% endblock menu %}
+          </div>
+        </div>
+      </div>
+    </header>
+{% block content %}
+    <div class="jumbotron main-jumbotron">
+      <div class="container">
+        <div class="content">
+          <h1>ZHASYRYN ZHAZU</h1>
+          <p class="margin-bottom">Кұпиялы хат алмасу сайты</p>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <h2>"ZHASYRYN ZHAZU" қосымшасы</h2>
+        <p class="lead">дегеніміз ең алдымен динамикалық, күрделі веб қосымша. Қосымшаның жұмыс жасау принціпі екі қолданушының бір-бірімен құпиялы, қорғалған ақпарат алмасуымен камтамасыз етеді.</p>
+        <p>Қосымшаны пайдалану үшін тіркеліп және тәркелген адамға ақпаратты жіберсеңіз болады. Ақпаратты жіберу үшін
+          "Ақпарат алмасу" батырмасына басып "Ақпарат жіберу" бөліміне кіріңіз және ақпаратты жазып болған соң, кілтті
+          орнатып "жіберу" батырмасын басыңыз. Сіздің жіберген ақпаратыңыз ақпарат алушыға шифрланған хабар ретінде келеді,
+          оны ашу үшін сізден кілтті алуы керек. Әрине шифрлау әдісі жабық кілтті, яғни пайдаланушыларға бір ғана кілт. 
+        </p>
+      </div>
+    </section>
+<hr>
+    <footer class="footer">
+      <div class="footer__block">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-sm-12">
+              <h4 class="heading">Біз туралы</h4>
+              <p>Қосымша жаттығу мақсатында жасалған "Криптография" сабағына байланысты жасалған жоба.</p>
+            </div>
+            <div class="col-md-4 col-sm-12">
+              <h4 class="heading">Әл-Фараби атындағы ҚазҰУ.</h4>
+              <h5>Топтың мүшелері</h5>
+              <p> Дүйсенбаев Қанат<br /> Аджан Серікболсын<br /> Оспанова Құттықыз <br /> Мырзабай Мөлдір</p>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock content %}
+      <div class="footer__copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <p>Критография 1-ші топ</p>
+            </div>
+            <div class="col-md-6">
+              <p class="credit">2019 жыл</p>
+              <!-- Please do not remove the backlink to us unless you have purchased the attribution-free license at https://bootstraptemple.com. It is part of the license conditions. Thanks for understanding :) -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+    <!-- Javascript files-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.cookie.js' %}"> </script>
+    <script src="{% static 'js/lightbox.min.js' %}"></script>
+    <script src="{% static 'js/front.js' %}"></script>
+
+  </body>
+</html>

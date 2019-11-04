@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% block menu %}
+    <ul class="nav navbar-nav">
+        <li><a href="{% url 'base_view' %}">Бастапқы бет</a></li>
+        <li class="active"><a href="{% url 'login_view' %}"><i class="fa fa-sign-in"></i>Кіру</a></li>
+        <li><a href="{% url 'registration' %}"><i class="fa fa-sign-in"></i>Тіркелу</a></li>
+    </ul>
+{% endblock menu %}
+
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br><br><br><br><br><br>
+<div class="container">
+	<h3 class="text-center">Кіру</h3>
+	<hr>
+	<div style="margin-bottom: 25%" class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<form action="" method="POST">
+				{{ form.error }}
+				{% csrf_token %}
+				{{ form|crispy }}
+				<input style="font-size:20px" class='btn btn-primary' type="submit" value="Кіру">
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock content %}

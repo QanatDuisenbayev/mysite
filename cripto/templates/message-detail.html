@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% block menu %}
+     <ul class="nav navbar-nav">
+        <li><a href="{% url 'base_view' %}">Бастапқы бет</a></li>
+        <li class="active"><a href="{% url 'account_view' request.user %}">Жeке парақшам</a></li>
+        <li><a href="{% url 'logout_view' %}"><i class="fa fa-sign-out"></i>Шығу</a></li> 
+     </ul>
+{% endblock menu %}
+
+
+{% block content %}
+    <br>
+    	<div class="container">
+        <div class="col-sm-12 text-center">
+            <h2>{{ message.title }}</h2>
+            <p id="text">{{ message.text2 }}</p>
+            <label>Кілт :</label>
+            <input type="input" name="key" id="key">
+            <br><br><br><br>
+            <input type="submit" id="open" class="btn btn-primary" value="ашу" onclick="OpenText()">
+            <h4 id="result"></h4>
+            <br>
+        </div>
+    	</div>
+    	<br><br><br><br><br>
+
+    <script type="text/javascript">
+        function OpenText(){
+            var key = document.getElementById('key').value;
+            var str = "{{ message.text }}";
+           if(key.toString() == "{{ message.key }}"){
+                document.getElementById("text").firstChild.nodeValue = str
+           }
+           else{
+            
+                document.getElementById("result").firstChild.nodeValue = 'кілт қате'
+           }
+        }
+
+    </script>
+{% endblock content %}

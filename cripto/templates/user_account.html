@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% block menu %}
+     <ul class="nav navbar-nav">
+        <li><a href="{% url 'base_view' %}">Бастапқы бет</a></li>
+        <li class="active"><a href="{% url 'account_view' request.user %}">Жeке парақшам</a></li>
+        <li><a href="{% url 'logout_view' %}"><i class="fa fa-sign-out"></i>Шығу</a></li> 
+     </ul>
+{% endblock menu %}
+
+
+{% block content %}
+<br><br><br>
+<div class="container">
+<div class="text-center">
+<a href="{% url 'send_message' %}"><button class="btn btn-primary">Ақпаратты жіберу</button></a>
+<a href="{% url 'message' %}"><button class="btn btn-primary">Менің хабарларым</button></a>	
+</div>
+
+<br><br><br>
+	<div class="col-sm-12 text-center">
+		<h3>Мәліметтеріңіз:</h3>
+		<h4>Аты: {{ current_user.first_name }} </h4>
+		<h4>Тегі: {{ current_user.last_name }}</h4>
+		<h4>email: {{ current_user.email }}</h4>
+	</div>
+</div>
+<hr>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock content %}

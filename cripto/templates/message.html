@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% block menu %}
+     <ul class="nav navbar-nav">
+        <li><a href="{% url 'base_view' %}">Бастапқы бет</a></li>
+        <li class="active"><a href="{% url 'account_view' request.user %}">Жeке парақшам</a></li>
+        <li><a href="{% url 'logout_view' %}"><i class="fa fa-sign-out"></i>Шығу</a></li> 
+     </ul>
+{% endblock menu %}
+
+
+{% block content %}
+        <div class="container">
+    	{% for message in messages %}
+           {% if current_user.first_name == message.name %}
+        <div class="col-sm-12 text-center" style="border: 4px double black;">
+            <h2>{{ message.title }}</h2>
+            <p>{{ message.text2|safe|truncatewords:30 }}</p>
+            <a href="{{ message.get_absolute_url }}"><button class="btn btn-primary">оқу</button></a>
+            <br><br>
+        {% endif %}
+    {% endfor %}
+        </div>
+    </div>
+<br><br><br><br><br>
+
+{% endblock content %}
